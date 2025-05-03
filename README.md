@@ -2,9 +2,16 @@
 
 This example deploys a remote MCP time server that doesn't require authentication on Cloudflare Workers. It provides tools for getting the current time in different timezones and converting time between timezones.
 
+## Live Demo
+
+You can try out a deployed version of this MCP Time Server at:
+```
+https://mcp-time-server.ajz.workers.dev/sse
+```
+
 ## Get started: 
 
-[![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-authless)
+[![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/iamajeesh/remote-mcp-time-server)
 
 This will deploy your MCP time server to a URL like: `mcp-time-server.<your-account>.workers.dev/sse`
 
@@ -45,44 +52,6 @@ Returns:
 Example:
 ```
 convert_time(source_timezone: "America/New_York", time: "14:30", target_timezone: "Europe/London")
-```
-
-## Direct HTTP Endpoints
-
-In addition to the MCP tools, the server also provides direct HTTP endpoints that can be accessed via REST:
-
-### 1. Get Current Time
-
-```
-GET /time?timezone=America/New_York
-```
-
-Parameters:
-- `timezone` (optional): IANA timezone name. Defaults to "UTC" if not provided.
-
-Response:
-```json
-{
-  "currentTime": "5/3/2025, 10:30:45 (America/New_York)"
-}
-```
-
-### 2. Convert Time
-
-```
-GET /convert?source_timezone=America/New_York&time=14:30&target_timezone=Europe/London
-```
-
-Parameters:
-- `source_timezone`: IANA timezone name for the source time
-- `time`: Time in HH:MM format (24-hour)
-- `target_timezone`: IANA timezone name for the target time
-
-Response:
-```json
-{
-  "result": "14:30 in America/New_York is 19:30 in Europe/London"
-}
 ```
 
 ## Connect to Cloudflare AI Playground
